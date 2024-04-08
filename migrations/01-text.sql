@@ -6,5 +6,6 @@ CREATE TABLE text (
        created timestamptz NOT NULL,
        attempts integer NOT NULL,
        seen integer NOT NULL,
-       edited integer NOT NULL
+       edited integer NOT NULL,
+       active boolean NOT NULL DEFAULT true
 );

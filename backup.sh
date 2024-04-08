@@ -30,11 +30,11 @@ backup() {
     echo "getting ${ENV_UNDER} url..."
     URL_UNDER=$(./url.sh $ENV_UNDER)
 
-    echo "deleting ${ENV_UNDER} db..."
+    echo "deleting data from ${ENV_UNDER} db..."
     echo "delete from text;" | psql -1 ${URL_UNDER}
     echo "delete from norm;" | psql -1 ${URL_UNDER}
 
-    echo "restoring ${ENV} db into ${ENV_UNDER} db..."
+    echo "restoring data from ${ENV} db into ${ENV_UNDER} db..."
     psql -1 ${URL_UNDER} < ./dumps/${ENV}/${TIMESTAMP}.sql
 
 }
