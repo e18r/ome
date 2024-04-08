@@ -5,6 +5,6 @@
   },
   "bucket": {
     "prod": "",
-    "test": "ome-42279"
+    "test": "ome-test"
   }
 }
