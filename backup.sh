@@ -40,3 +40,4 @@ backup() {
 }
 
 backup test
+backup prod

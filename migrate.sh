@@ -11,7 +11,7 @@ ENV=$1
 echo "getting ${ENV} db url..."
 URL=$(./url.sh ${ENV})
 for MIGRATION in ./migrations/*.sql; do
-    // TODO: partial migration
+    # TODO: partial migration
     echo "applying ${MIGRATION} to ${ENV} db..."
     psql -1 ${URL} -f ${MIGRATION}
 done
