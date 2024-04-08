@@ -1,0 +1,10 @@
+{
+  "project": {
+    "prod": "indr-prod",
+    "test": "indr-test"
+  },
+  "bucket": {
+    "prod": "",
+    "test": "ome-42279"
+  }
+}
