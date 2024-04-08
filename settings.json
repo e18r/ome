@@ -1,10 +1,10 @@
 {
   "project": {
-    "prod": "indr-prod",
-    "test": "indr-test"
+    "prod": "ome-prod",
+    "test": "ome-test"
   },
   "bucket": {
-    "prod": "",
+    "prod": "ome-prod",
     "test": "ome-test"
   }
 }
