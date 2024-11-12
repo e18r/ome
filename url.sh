@@ -12,5 +12,5 @@ if [ $ENV = "dev" ]; then
     echo "palindr"
 else
     PROJECT=$(jq -r .project.$ENV ./settings.json)
-    heroku pg:credentials:url -a $PROJECT | tail -n1 | xargs
+    heroku pg:credentials:url -a $PROJECT | grep postgres | xargs
 fi
