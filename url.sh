@@ -10,6 +10,8 @@ fi
 ENV=$1
 if [ $ENV = "dev" ]; then
     echo "palindr"
+elif [ $ENV = "test" ]; then
+    neon connection-string $ENV
 else
     PROJECT=$(jq -r .project.$ENV ./settings.json)
     heroku pg:credentials:url -a $PROJECT | grep postgres | xargs
