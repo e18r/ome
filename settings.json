@@ -6,5 +6,9 @@
   "bucket": {
     "prod": "ome-prod",
     "test": "ome-test"
+  },
+  "neon": {
+    "prod": "",
+    "test": "summer-sun-97791537"
   }
 }
