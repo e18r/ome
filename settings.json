@@ -8,7 +8,7 @@
     "test": "ome-test"
   },
   "neon": {
-    "prod": "",
+    "prod": "lively-unit-40555327",
     "test": "summer-sun-97791537"
   }
 }
