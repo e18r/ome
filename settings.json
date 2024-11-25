@@ -1,14 +1,14 @@
 {
-  "project": {
-    "prod": "ome-prod",
-    "test": "ome-test"
-  },
-  "bucket": {
+  "heroku": {
     "prod": "ome-prod",
     "test": "ome-test"
   },
   "neon": {
     "prod": "lively-unit-40555327",
     "test": "summer-sun-97791537"
+  },
+  "bucket": {
+    "prod": "ome-prod",
+    "test": "ome-test"
   }
 }

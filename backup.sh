@@ -15,27 +15,27 @@ backup() {
         exit 1
     fi
 
-    echo "getting ${ENV} db url..."
-    URL=$(./url.sh ${ENV})
+    echo "getting heroku ${ENV} db url..."
+    HEROKU_URL=$(./url.sh ${ENV} heroku)
 
-    echo "dumping ${ENV} db..."
+    echo "dumping heroku ${ENV} db..."
     TIMESTAMP=$(date +%s)
-    pg_dump --data-only ${URL} > ./dumps/${ENV}/${TIMESTAMP}.sql
+    pg_dump --data-only ${HEROKU_URL} > ./dumps/${ENV}/${TIMESTAMP}.sql
     echo "> ./dumps/${ENV}/${TIMESTAMP}.sql"
 
-    echo "uploading ${ENV} db to gcloud..."
+    echo "uploading heroku ${ENV} db to gcloud..."
     BUCKET=$(jq -r .bucket.${ENV} ./settings.json)
     gcloud storage cp ./dumps/${ENV}/${TIMESTAMP}.sql gs://${BUCKET}
 
-    echo "getting ${ENV_UNDER} url..."
-    URL_UNDER=$(./url.sh ${ENV_UNDER})
+    echo "getting heroku ${ENV_UNDER} url..."
+    HEROKU_URL_UNDER=$(./url.sh ${ENV_UNDER} heroku)
 
-    echo "deleting data from ${ENV_UNDER} db..."
-    echo "delete from text;" | psql -1 ${URL_UNDER}
-    echo "delete from norm;" | psql -1 ${URL_UNDER}
+    echo "deleting data from heroku ${ENV_UNDER} db..."
+    echo "delete from text;" | psql -1 ${HEROKU_URL_UNDER}
+    echo "delete from norm;" | psql -1 ${HEROKU_URL_UNDER}
 
-    echo "restoring data from ${ENV} db into ${ENV_UNDER} db..."
-    psql -1 ${URL_UNDER} < ./dumps/${ENV}/${TIMESTAMP}.sql
+    echo "restoring data from heroku ${ENV} db into heroku ${ENV_UNDER} db..."
+    psql -1 ${HEROKU_URL_UNDER} < ./dumps/${ENV}/${TIMESTAMP}.sql
 
 }
 
