@@ -28,7 +28,7 @@ backup() {
     gcloud storage cp ./dumps/${ENV}/${TIMESTAMP}.sql gs://${BUCKET}
 
     echo "getting ${ENV_UNDER} url..."
-    URL_UNDER=$(./url.sh $ENV_UNDER)
+    URL_UNDER=$(./url.sh ${ENV_UNDER})
 
     echo "deleting data from ${ENV_UNDER} db..."
     echo "delete from text;" | psql -1 ${URL_UNDER}
