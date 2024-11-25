@@ -10,9 +10,6 @@ backup() {
         ENV_UNDER="dev"
     elif [ "${ENV}" = "prod" ]; then
         ENV_UNDER="test"
-    else
-        echo "bad ENV"
-        exit 1
     fi
 
     echo "getting heroku ${ENV} db url..."

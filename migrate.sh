@@ -3,11 +3,11 @@
 cd "$(dirname $0)"
 
 if [[ ("$1" != "dev" && "$1" != "test" && "$1" != "prod") \
-   || ("$1" != "dev" && "$2" != "heroku" && "$2" != "neon") ]]; then
-    echo "usage: ./migrate.sh ENV [TYPE]"
+   || ("$2" != "heroku" && "$2" != "neon") ]]; then
+    echo "usage: ./migrate.sh ENV TYPE"
     echo
     echo "ENV:  dev|test|prod"
-    echo "TYPE: heroku|neon (only for test and prod environments)"
+    echo "TYPE: heroku|neon"
     exit 1
 fi
 
