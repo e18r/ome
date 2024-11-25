@@ -14,11 +14,7 @@ fi
 ENV=$1
 TYPE=$2
 if [ $ENV = "dev" ]; then
-    if [ $TYPE = "heroku" ]; then
-        echo "palindr"
-    elif [ $TYPE = "neon" ]; then
-        echo "palindr2"
-    fi
+    jq -r .${TYPE}.dev ./settings.json
 elif [ $TYPE = "neon" ]; then
     PROJECT=$(jq -r .neon.$ENV ./settings.json)
     neon connection-string --project-id $PROJECT

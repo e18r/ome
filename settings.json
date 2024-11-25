@@ -1,11 +1,13 @@
 {
   "heroku": {
     "prod": "ome-prod",
-    "test": "ome-test"
+    "test": "ome-test",
+    "dev": "palindr"
   },
   "neon": {
     "prod": "lively-unit-40555327",
-    "test": "summer-sun-97791537"
+    "test": "summer-sun-97791537",
+    "dev": "palindr2"
   },
   "bucket": {
     "prod": "ome-prod",
