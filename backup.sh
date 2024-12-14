@@ -22,10 +22,7 @@ NEON_URL=$(./url.sh ${ENV} neon)
 
 echo "dumping neon ${ENV} db..."
 TIMESTAMP=$(date +%s)
-# remove transaction_timeout directive to make it compatible with postgres <v17
-pg_dump --verbose --data-only ${NEON_URL} \
-    | sed "s/SET transaction_timeout.*//g" \
-          > ./dumps/${ENV}/${TIMESTAMP}.sql
+pg_dump --data-only ${NEON_URL} > ./dumps/${ENV}/${TIMESTAMP}.sql
 echo "> ./dumps/${ENV}/${TIMESTAMP}.sql"
 
 if [ "${ENV}" != "dev" ]; then
@@ -36,15 +33,15 @@ if [ "${ENV}" != "dev" ]; then
 
 fi
 
-echo "getting heroku ${ENV} db url..."
-HEROKU_URL=$(./url.sh ${ENV} heroku)
+# echo "getting heroku ${ENV} db url..."
+# HEROKU_URL=$(./url.sh ${ENV} heroku)
 
-echo "deleting data from heroku ${ENV} db..."
-echo "delete from text;" | psql -1 ${HEROKU_URL}
-echo "delete from norm;" | psql -1 ${HEROKU_URL}
+# echo "deleting data from heroku ${ENV} db..."
+# echo "delete from text;" | psql -1 ${HEROKU_URL}
+# echo "delete from norm;" | psql -1 ${HEROKU_URL}
 
-echo "neon ${ENV} -> heroku ${ENV}..."
-psql -1 ${HEROKU_URL} < ./dumps/${ENV}/${TIMESTAMP}.sql
+# echo "neon ${ENV} -> heroku ${ENV}..."
+# psql -1 ${HEROKU_URL} < ./dumps/${ENV}/${TIMESTAMP}.sql
 
 if [ "${ENV}" = "dev" ]; then
     exit 0
